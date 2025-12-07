@@ -32,7 +32,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="client.h" />
+		<Unit filename="client_103012400012.cpp" />
+		<Unit filename="client_103012400013.cpp" />
+		<Unit filename="developer.h" />
+		<Unit filename="developer_103012400012.cpp" />
+		<Unit filename="developer_103012400013.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="main_admin.cpp" />
+		<Unit filename="main_user.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

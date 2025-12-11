@@ -14,6 +14,7 @@ struct Developer{
 struct Client{
     string idClient;
     string nameClient;
+    string nameProject;
 };
 
 struct elmDeveloper{
@@ -33,9 +34,7 @@ struct ListDeveloper{
     adrDeveloper last;
 };
 
-createListDeveloper(ListDeveloper &LD);
-bool isEmptyDeveloper(ListDeveloper LD);
-bool isEmptyClient(adrClient C);
+void createListDeveloper(ListDeveloper &LD);
 adrDeveloper createElmDeveloper(string idDev, string nameDev);
 adrClient createElmClient(string idClient, string nameClient);
 void addDeveloper(ListDeveloper &LD, adrDeveloper D);
@@ -44,8 +43,12 @@ void deleteDeveloper(ListDeveloper &LD, string idDev);
 void deleteClient(adrDeveloper D, string idClient);
 adrDeveloper searchDeveloper(ListDeveloper L, string idDev);
 adrClient searchClient(adrDeveloper D, string idClient);
-void maxDeveloper(ListDeveloper LD);
+void mostClientDeveloper(ListDeveloper LD);
+int countClientsofDeveloper(adrDeveloper D);
 int totalClient(ListDeveloper LD);
-void displayList(ListDeveloper L);
+void displayList(ListDeveloper LD);
+void showDeveloper(ListDeveloper LD);
+void ShowClientsofDeveloper(ListDeveloper LD, string idDev);
+void showUniqueClient(ListDeveloper LD);
 
 #endif // HEADER_H_INCLUDED

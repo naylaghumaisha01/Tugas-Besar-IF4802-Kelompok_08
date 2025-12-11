@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1765471531 source:d:\tugasbesar\tugas-besar-if4802-kelompok_08\tugas-besar-if4802-kelompok_08\client_103012400012.cpp
+	"header.h"
+
+1763819485 source:d:\tugasbesar\tugas-besar-if4802-kelompok_08\tugas-besar-if4802-kelompok_08\client_103012400013.cpp
+
+1763819444 source:d:\tugasbesar\tugas-besar-if4802-kelompok_08\tugas-besar-if4802-kelompok_08\developer_103012400013.cpp
+
+1584205420 source:d:\tugasbesar\tugas-besar-if4802-kelompok_08\tugas-besar-if4802-kelompok_08\main.cpp
+	<iostream>
+
+1763819620 source:d:\tugasbesar\tugas-besar-if4802-kelompok_08\tugas-besar-if4802-kelompok_08\main_admin.cpp
+
+1763819660 source:d:\tugasbesar\tugas-besar-if4802-kelompok_08\tugas-besar-if4802-kelompok_08\main_user.cpp
+
+1765471880 source:d:\tugasbesar\tugas-besar-if4802-kelompok_08\tugas-besar-if4802-kelompok_08\developer_103012400012.cpp
+	"header.h"
+
+1765471525 d:\tugasbesar\tugas-besar-if4802-kelompok_08\tugas-besar-if4802-kelompok_08\header.h
+	<iostream>
+

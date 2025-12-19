@@ -34,21 +34,38 @@ struct ListDeveloper{
     adrDeveloper last;
 };
 
+//header parent
 void createListDeveloper(ListDeveloper &LD);
 adrDeveloper createElmDeveloper(string idDev, string nameDev);
-adrClient createElmClient(string idClient, string nameClient);
-void addDeveloper(ListDeveloper &LD, adrDeveloper D);
-void addClient(adrDeveloper &D, adrClient C);
-void deleteDeveloper(ListDeveloper &LD, string idDev);
-void deleteClient(adrDeveloper D, string idClient);
+void insertDevFirst(ListDeveloper &LD, adrDeveloper D);
+void insertDevLast(ListDeveloper &LD, adrDeveloper D);
+void insertDevAfter(ListDeveloper &LD, adrDeveloper prec, adrDeveloper D);
+void deleteDevFirst(ListDeveloper &LD, adrDeveloper &D);
+void deleteDevLast(ListDeveloper &LD, adrDeveloper &D);
+void deleteDevAfter(ListDeveloper LD, adrDeveloper prec, adrDeveloper &D);
 adrDeveloper searchDeveloper(ListDeveloper L, string idDev);
-adrClient searchClient(adrDeveloper D, string idClient);
 void mostClientDeveloper(ListDeveloper LD);
+void showDeveloper(ListDeveloper LD);
+
+//header child
+adrClient createElmClient(string idClient, string nameClient, string nameProject);
+void insertClientFirst(adrDeveloper D, adrClient C);
+void insertClientLast(adrDeveloper D, adrClient C);
+void insertClientAfter(adrClient prec, adrClient C);
+void deleteClientFirst(adrDeveloper D, adrClient &C);
+void deleteClientLast(adrDeveloper D, adrClient &C);
+void deleteClientAfter(adrClient prec, adrClient &C);
+adrClient searchClient(adrDeveloper D, string idClient);
 int countClientsofDeveloper(adrDeveloper D);
 int totalClient(ListDeveloper LD);
-void displayList(ListDeveloper LD);
-void showDeveloper(ListDeveloper LD);
-void ShowClientsofDeveloper(ListDeveloper LD, string idDev);
-void showUniqueClient(ListDeveloper LD);
+void showClient(ListDeveloper LD);
+void showClientsofDeveloper(ListDeveloper LD, string idDev);
+void showClientSorted(adrDeveloper D);
+
+//header main
+void menuAdmin();
+void menuParent();
+void menuChild();
+void menuUser();
 
 #endif // HEADER_H_INCLUDED

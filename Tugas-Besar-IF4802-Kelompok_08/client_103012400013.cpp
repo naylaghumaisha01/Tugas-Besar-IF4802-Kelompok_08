@@ -1,30 +1,84 @@
 #include "header.h"
 
-adrClient createElmClient(string idClient, string nameClient) {
+adrClient createElmClient(string idClient, string nameClient, string nameProject) {
     adrClient C = new elmClient;
     C->info.idClient = idClient;
     C->info.nameClient = nameClient;
-    C->info.nameProject = "";
+    C->info.nameProject = nameProject;
     C->next = nullptr;
     return C;
 }
 
-void addClient(adrDeveloper &D, adrClient C) {
-    if (D == nullptr || C == nullptr) {
-        cout << "Developer atau Client tidak valid." << endl;
-        return;
+void insertClientFirst(adrDeveloper D, adrClient C){
+    if(D->firstClient == nullptr){
+        D->firstClient = C;
+        C->next = nullptr;
+    }else {
+        C->next = D->firstClient;
+        D->firstClient = C;
     }
+}
 
+void insertClientLast(adrDeveloper D, adrClient C){
+    adrClient P;
+    P = D->firstClient;
     if (D->firstClient == nullptr) {
         D->firstClient = C;
-    } else {
-        adrClient last = D->firstClient;
-        while (last->next != nullptr) {
-            last = last->next;
+        C->next = nullptr;
+    }else {
+        while (P->next != nullptr) {
+            P = P->next;
         }
-        last->next = C;
+        P->next = C;
+        C->next = nullptr;
     }
-    cout << "Client " << C->info.nameClient << " berhasil ditambahkan ke Developer " << D->info.nameDev << "." << endl;
+}
+
+void insertClientAfter(adrClient prec, adrClient C){
+    if(prec != nullptr){
+        C->next = prec->next;
+        prec->next = C;
+    }
+}
+
+void deleteClientFirst(adrDeveloper D, adrClient &C){
+    if(D->firstClient == nullptr){
+        C = nullptr;
+    }else {
+        C = D->firstClient;
+        D->firstClient = C->next;
+        C->next = nullptr;
+    }
+
+}
+
+void deleteClientLast(adrDeveloper D, adrClient &C){
+    adrClient P;
+    P = D->firstClient;
+    if(D->firstClient == nullptr){
+        C = nullptr;
+    }else if(D->firstClient->next == nullptr){
+        C = D->firstClient;
+        D->firstClient = nullptr;
+        C->next = nullptr;
+    }else {
+        while(P->next->next != nullptr){
+            P = P->next;
+        }
+        C = P->next;
+        P->next = nullptr;
+        C->next = nullptr;
+    }
+}
+
+void deleteClientAfter(adrClient prec, adrClient &C){
+    if(prec == nullptr || prec->next == nullptr){
+        C = nullptr;
+    }else {
+    C = prec->next;
+    prec->next = C->next;
+    C->next = nullptr;
+    }
 }
 
 adrClient searchClient(adrDeveloper D, string idClient) {
@@ -41,39 +95,4 @@ adrClient searchClient(adrDeveloper D, string idClient) {
     }
 
     return nullptr;
-}
-
-void deleteClient(adrDeveloper D, string idClient) {
-    if (D == nullptr || D->firstClient == nullptr) {
-        cout << "Developer tidak valid atau tidak memiliki Client." << endl;
-        return;
-    }
-
-    adrClient current = D->firstClient;
-    adrClient prev = nullptr;
-    string clientName;
-
-    if (current != nullptr && current->info.idClient == idClient) {
-        clientName = current->info.nameClient;
-        D->firstClient = current->next;
-        current->next = nullptr;
-        delete current;
-        cout << "Client " << clientName << " (ID: " << idClient << ") berhasil dihapus dari Developer " << D->info.nameDev << "." << endl;
-        return;
-    }
-
-    while (current != nullptr && current->info.idClient != idClient) {
-        prev = current;
-        current = current->next;
-    }
-
-    if (current != nullptr) {
-        clientName = current->info.nameClient;
-        prev->next = current->next;
-        current->next = nullptr;
-        delete current;
-        cout << "Client " << clientName << " (ID: " << idClient << ") berhasil dihapus dari Developer " << D->info.nameDev << "." << endl;
-    } else {
-        cout << "Client dengan ID " << idClient << " tidak ditemukan pada Developer " << D->info.nameDev << "." << endl;
-    }
 }
